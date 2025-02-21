@@ -19,7 +19,7 @@ func main() {
 	fmt.Println("Hello, Worlds!")
 	app := fiber.New()
 
-	err := godotenv.Load(".env")
+	err := godotenv.Load(".env.development.local") // env file for local development
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
@@ -83,5 +83,5 @@ func main() {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{"error": "Todo not found"})
 	})
 
-	log.Fatal(app.Listen(":"+ PORT))
+	log.Fatal(app.Listen(":" + PORT))
 }
